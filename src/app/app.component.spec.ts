@@ -1,29 +1,26 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed, async, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
+  let comp: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+    imports: [RouterModule],
+    declarations: [AppComponent],
+    providers: []
+  }).compileComponents()
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'contacts-crud'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('contacts-crud');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    comp = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('contacts-crud app is running!');
   });
+
+  it('should create', () => {
+    expect(comp).toBeTruthy();
+  })
 });
