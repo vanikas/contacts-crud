@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Contact } from 'src/app/pages/core/models/contacts';
+import { CONSTANTS } from '../../core/constants/contant';
 
 @Component({
   selector: 'app-add-contact',
@@ -34,10 +35,10 @@ export class AddContactComponent implements OnInit {
 
   // adding new contact in local
   submit() {
-    const contactsList = JSON.parse(localStorage.getItem("contactsList") || '');
+    const contactsList = JSON.parse(localStorage.getItem(CONSTANTS.CONTACTSLIST) || '');
     this.form.value.id = contactsList.length + 1;
     contactsList.push(this.form.value);
-    localStorage.setItem("contactsList", JSON.stringify(contactsList));
+    localStorage.setItem(CONSTANTS.CONTACTSLIST, JSON.stringify(contactsList));
     this.router.navigateByUrl('contacts', { state: { edit: true } });
   }
 
