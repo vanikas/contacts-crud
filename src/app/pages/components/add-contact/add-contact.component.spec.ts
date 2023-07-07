@@ -19,6 +19,7 @@ describe('AddContactComponent', () => {
 
 
   beforeEach(() => {
+    localStorage.setItem('contactsList', JSON.stringify(mockContacts));
     fixture = TestBed.createComponent(AddContactComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -32,3 +33,12 @@ describe('AddContactComponent', () => {
     expect(navArgs).toBe('contacts');
   });
 });
+
+const mockContacts = [
+  {
+    "firstName": "Amit",
+    "lastName": "Roy",
+    "phone": "9876543210",
+    "id": 1
+  }
+]

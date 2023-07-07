@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { ContactsService } from './contacts.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Contact } from 'src/models/contacts';
+import { Contact } from 'src/app/pages/core/models/contacts';
 
 describe('ContactsServiceTsService', () => {
   let service: ContactsService;

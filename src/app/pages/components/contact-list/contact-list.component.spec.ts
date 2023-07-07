@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContactListComponent } from './contact-list.component';
-import { ContactsService } from 'src/services/contacts.service';
+import { ContactsService } from 'src/app/pages/core/services/contacts.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Contact } from 'src/models/contacts';
+import { Contact } from 'src/app/pages/core/models/contacts';
 import { of } from 'rxjs';
 import { RouterModule } from '@angular/router';
 

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Contact } from 'src/models/contacts';
-import { ContactsService } from 'src/services/contacts.service';
+import { Contact } from 'src/app/pages/core/models/contacts';
+import { ContactsService } from 'src/app/pages/core/services/contacts.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -26,6 +26,7 @@ export class ContactListComponent {
   }
 
 
+  // initializing reactive form for edit operation
   initializeForm() {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -35,6 +36,7 @@ export class ContactListComponent {
     });
   }
 
+  // getting contacts list from API
   getContactsList() {
     this.contactService.getContacts().subscribe(response => {
       this.contactsList = response;
@@ -50,12 +52,14 @@ export class ContactListComponent {
     });
   }
 
+  // updating contact list on the index basis
   update(i: number) {
     this.enableEditIndex = null;
     this.contactsList[i] = this.form.value;
     localStorage.setItem("contactsList", JSON.stringify(this.contactsList));
   }
 
+  // switching edit mode
   switchEditMode(i: any) {
     let user = this.contactsList[i];
     if (user) {
@@ -65,7 +69,7 @@ export class ContactListComponent {
   }
 
   delete(i: number) {
-    // deleting by index
+    // deleting contact by index
     this.enableEditIndex = null;
     this.contactsList.splice(i, 1);
     localStorage.setItem("contactsList", JSON.stringify(this.contactsList));

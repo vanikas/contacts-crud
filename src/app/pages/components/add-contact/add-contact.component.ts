@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Contact } from 'src/models/contacts';
+import { Contact } from 'src/app/pages/core/models/contacts';
 
 @Component({
   selector: 'app-add-contact',
@@ -19,6 +19,7 @@ export class AddContactComponent implements OnInit {
     this.initializeForm();
   }
 
+  // initializing reactive from for new add contact
   initializeForm() {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -31,6 +32,7 @@ export class AddContactComponent implements OnInit {
     return this.form.controls;
   }
 
+  // adding new contact in local
   submit() {
     const contactsList = JSON.parse(localStorage.getItem("contactsList") || '');
     this.form.value.id = contactsList.length + 1;
